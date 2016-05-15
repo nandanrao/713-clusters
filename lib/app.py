@@ -11,6 +11,7 @@ def hello():
 
 @app.route('/clusters', methods = ['POST'])
 def clusters():
+    print 'hitting clusters'
     data = request.get_json()
     d = do_it(data['songs'])
     return json.dumps(d)
