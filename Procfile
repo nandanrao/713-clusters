@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn --bind localhost:5000 wsgi:app
