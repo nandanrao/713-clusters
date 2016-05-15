@@ -1,1 +1,1 @@
-web: gunicorn lib.app:begin
+web: gunicorn wsgi:app

@@ -16,23 +16,23 @@ def get_all_genres(d):
        data.extend(d[i]['genres'])
    return list(set(data))
 
-def get_data(data):
+def get_data(d):
     data = []
-    unique_values = get_all_genres(data)
-    for i in range(len(data)):
+    unique_values = get_all_genres(d)
+    for i in range(len(d)):
         temp = []
-        temp.append(json_file[i]['id'])
-        temp.append(json_file[i]['acousticness'])
-        temp.append(json_file[i]['danceability'])
-        temp.append(json_file[i]['energy'])
-        temp.append(json_file[i]['instrumentalness'])
-        temp.append(json_file[i]['liveness'])
-        temp.append(json_file[i]['loudness'])
-        temp.append(json_file[i]['popularity'])
-        temp.append(json_file[i]['speechiness'])
-        temp.append(json_file[i]['tempo'])
-        temp.append(json_file[i]['valence'])
-        temp_genres = json_file[i]['genres']
+        temp.append(d[i]['id'])
+        temp.append(d[i]['acousticness'])
+        temp.append(d[i]['danceability'])
+        temp.append(d[i]['energy'])
+        temp.append(d[i]['instrumentalness'])
+        temp.append(d[i]['liveness'])
+        temp.append(d[i]['loudness'])
+        temp.append(d[i]['popularity'])
+        temp.append(d[i]['speechiness'])
+        temp.append(d[i]['tempo'])
+        temp.append(d[i]['valence'])
+        temp_genres = d[i]['genres']
         dummy_genres = [int(x in temp_genres) for x in unique_values]
         temp.extend(dummy_genres)
         data.append(temp)
@@ -52,7 +52,7 @@ def get_song_and_artist(json):
         data.append(temp)
     return data
 
-def get_song_genre(json_file,indexes):
+def get_song_genre(d,indexes):
     data = []
     for i in indexes:
         data.extend(d[i]['genres'])

@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from lib.clusters import do_it
 import os
+import json
 
 app = Flask(__name__)
 
@@ -15,7 +16,8 @@ def hello():
 @app.route('/clusters', methods = ['POST'])
 def clusters():
     data = request.get_json()
-    return do_it(data)
+    d = do_it(data['songs'])
+    return json.dumps(d)
 
 if __name__ == "__main__":
     begin()

@@ -5,9 +5,6 @@ import os
 
 app = Flask(__name__)
 
-def begin(environ, start_response):
-    app.run()
-
 @app.route("/")
 def hello():
     return "Hello World!"
@@ -15,7 +12,8 @@ def hello():
 @app.route('/clusters', methods = ['POST'])
 def clusters():
     data = request.get_json()
-    return do_it(data)
+    d = do_it(data['songs'])
+    return json.dumps(d)
 
 if __name__ == "__main__":
-    begin()
+    app.run()
