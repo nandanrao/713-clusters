@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-def begin():
+def begin(environ, start_response):
     app.run()
 
 @app.route("/")
